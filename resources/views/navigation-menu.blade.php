@@ -18,7 +18,12 @@
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link class="text-decoration-none" href="{{ route('all.category') }}" :active="request()->routeIs('all.category')">
-                        Category
+                        All Category
+                    </x-jet-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link class="text-decoration-none" href="{{ route('all.brand') }}" :active="request()->routeIs('all.brand')">
+                        Brand
                     </x-jet-nav-link>
                 </div>
             </div>

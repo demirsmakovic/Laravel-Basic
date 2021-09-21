@@ -18,7 +18,7 @@ class CategoryController extends Controller
     }
 
     public function AddCat(Request $request)
-{
+    {
     $request->validate([
         'category_name' => 'required|unique:categories|max:255',
     ],
@@ -26,7 +26,7 @@ class CategoryController extends Controller
          'category_name.required' => 'Please input category name',
     ]
        
-);
+    );
     Category::insert([
         'category_name' => $request->category_name,
         'user_id' => Auth::user()->id,
