@@ -34,7 +34,8 @@
                          <td>{{ $brand->brand_name }}</td>
                          <td><img src="{{ asset($brand->brand_image) }}" style="height:40px; width:70px;"></td>
                          <td>{{ $brand->created_at->diffForHumans()}}</td>
-                         <td><a class="btn btn-info" href="">Edit</a> <a class="btn btn-danger" href="">Delete</a></td>
+                         <td><a class="btn btn-info" href="{{ url('brand/edit/'.$brand->id) }}">Edit</a> 
+                             <a class="btn btn-danger" href="{{ url('brand/delete/'.$brand->id) }}">Delete</a></td>
                      </tr>
                         @endforeach
                     </tbody>
