@@ -1,9 +1,5 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-           <b>Brand</b>
-        </h2>
-    </x-slot>
+@extends('admin.admin_master')
+@section('admin')
 
     <div class="py-12">
         <div class="container">
@@ -23,7 +19,7 @@
                                @csrf
                               <input type="hidden" name="old_image" value="{{ $brands->brand_image }}">
                               <label for="cat_name" class="form-label">Brand Name</label>
-                              <input type="text" class="form-control" name="brand_name"value="{{ $brands->brand_name }}">
+                              <input type="text" class="form-control" name="brand_name" value="{{ $brands->brand_name }}">
                               @error('brand_name')
                                   <span class="text-danger">{{ $message }}</span>
                               @enderror
@@ -45,4 +41,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+@endsection
