@@ -4,6 +4,11 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\ContactController;
+use App\Models\Multipic;
+use App\Models\Service;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -22,7 +27,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     $brands = DB::table('brands')->get();
     $about = DB::table('home_abouts')->first();
-    return view('home', compact('brands', 'about'));
+    $images = Multipic::all();
+    $services = Service::all();
+    return view('home', compact('brands', 'about', 'images', 'services'));
 });
 
 //CategoryController
@@ -69,3 +76,24 @@ Route::post('/about/store', [AboutController::class, 'StoreAbout'])->name('store
 Route::get('/about/delete/{id}', [AboutController::class, 'Delete']);
 Route::get('/about/edit/{id}', [AboutController::class, 'Edit']);
 Route::post('/about/update/{id}', [AboutController::class, 'Update']);
+
+//PageController
+Route::get('/pages/portfolio', [PageController::class, 'Portfolio'])->name('pages.portfolio');
+Route::get('/pages/contact', [PageController::class, 'Contact'])->name('pages.contact');
+Route::get('/pages/services', [PageController::class, 'Services'])->name('pages.services');
+Route::get('/pages/about', [PageController::class, 'About'])->name('pages.about');
+
+//ServiceController
+Route::get('/service/all', [ServiceController::class, 'AllService'])->name('all.service');
+Route::post('/service/store', [ServiceController::class, 'StoreService'])->name('store.service');
+
+
+//ContactController
+Route::get('/contact/info', [ContactController::class, 'ContactInfo'])->name('contact.info');
+Route::post('/contact/add', [ContactController::class, 'AddContactInfo'])->name('contact.store');
+Route::get('/contact/edit/{id}', [ContactController::class, 'Edit']);
+Route::post('/contact/update/{id}', [ContactController::class, 'Update']);
+Route::get('/contact/delete/{id}', [ContactController::class, 'Delete']);
+Route::get('/contact/message', [ContactController::class, 'ContactMsg'])->name('contact.message');
+Route::get('/contact/delete_msg/{id}', [ContactController::class, 'DeleteMessage']);
+Route::post('/pages/send_msg', [ContactController::class, 'SendMessage'])->name('send.message');

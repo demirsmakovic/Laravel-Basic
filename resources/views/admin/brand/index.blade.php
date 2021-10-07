@@ -38,7 +38,9 @@
                         @endforeach
                     </tbody>
                     </table>
+                    <div class="blog-pagination">
                     {{ $brands->links() }}
+                    </div>
                   </div>
                 </div>
                 <div class="col-md-4">
