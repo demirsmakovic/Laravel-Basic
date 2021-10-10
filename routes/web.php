@@ -7,6 +7,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CPassword;
 use App\Models\Multipic;
 use App\Models\Service;
 use App\Models\User;
@@ -97,3 +98,10 @@ Route::get('/contact/delete/{id}', [ContactController::class, 'Delete']);
 Route::get('/contact/message', [ContactController::class, 'ContactMsg'])->name('contact.message');
 Route::get('/contact/delete_msg/{id}', [ContactController::class, 'DeleteMessage']);
 Route::post('/pages/send_msg', [ContactController::class, 'SendMessage'])->name('send.message');
+
+
+
+//Change Profile
+Route::get('/profile/change_password', [CPassword::class, 'CPassword'])->name('change.password');
+Route::post('/profile/update_password', [CPassword::class, 'UpdatePassword'])->name('update.password');
+

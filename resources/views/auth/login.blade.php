@@ -48,7 +48,7 @@
           <div class="card">
             <div class="card-header bg-primary">
               <div class="app-brand">
-                <a href="/index.html">
+                <a href="/">
                   <svg class="brand-icon" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" width="30" height="33"
                     viewBox="0 0 30 33">
                     <g fill="none" fill-rule="evenodd">
@@ -60,8 +60,13 @@
                 </a>
               </div>
             </div>
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                   <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                   {{ session('success') }}
+                </div>
+               @endif
             <div class="card-body p-5">
-
               <h4 class="text-dark mb-5">Sign In</h4>
               <form method="POST" action="{{ route('login') }}">
             @csrf

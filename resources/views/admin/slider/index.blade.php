@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-md-12">
                   <div class="card">
-                      @if (session('succes'))
+                      @if (session('success'))
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                             {{ session('succes') }}
