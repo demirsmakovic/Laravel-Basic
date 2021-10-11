@@ -22,6 +22,7 @@
 
   <!-- SLEEK CSS -->
   <link id="sleek-css" rel="stylesheet" href="{{ asset('backend/assets/css/sleek.css') }}" />
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 
   
 
@@ -149,19 +150,13 @@
 
                       <li>
                         <a href="{{ route('change.password') }}">
-                          <i class="mdi mdi-account"></i> Change Password
+                          <i class="mdi mdi-settings"></i> Change Password
                         </a>
                       </li>
                       <li>
-                        <a href="email-inbox.html">
-                          <i class="mdi mdi-email"></i> Message
+                        <a href="{{ route('update.profile') }}">
+                          <i class="mdi mdi-account"></i> Update Profile
                         </a>
-                      </li>
-                      <li>
-                        <a href="#"> <i class="mdi mdi-diamond-stone"></i> Projects </a>
-                      </li>
-                      <li>
-                        <a href="#"> <i class="mdi mdi-settings"></i> Account Setting </a>
                       </li>
 
                       <li class="dropdown-footer">
@@ -226,6 +221,30 @@
 <script src="{{ asset('backend/assets/js/date-range.js') }}"></script>
 <script src="{{ asset('backend/assets/js/map.js') }}"></script>
 <script src="{{ asset('backend/assets/js/custom.js') }}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"></script>
+
+<script>
+@if(Session::has('message'))
+var type = "{{ Session::get('alert-type', 'info') }}";
+switch (type) {
+  case 'info':
+    toastr.info("{{ Session::get('message') }}"); 
+  break;
+  case 'success':
+    toastr.success("{{ Session::get('message') }}"); 
+  break;
+  case 'warning':
+    toastr.warning("{{ Session::get('message') }}"); 
+  break;
+  case 'error':
+    toastr.error("{{ Session::get('message') }}"); 
+  break;
+}
+@endif
+</script>
+
+
 
 
 

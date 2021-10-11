@@ -8,12 +8,6 @@
             <div class="row">
                 <div class="col-md-8">
                   <div class="card">
-                      @if (session('succes'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                            {{ session('succes') }}
-                        </div>
-                      @endif
                    <div class="card-header">All Brand</div>
                     <table class="table">
                         <thead>

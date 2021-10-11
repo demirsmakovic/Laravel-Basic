@@ -33,4 +33,30 @@ class CPassword extends Controller
             return redirect()->back()->with('error', 'Current Password IS Invalid');
         }
     }
+
+    public function PUpdate()
+    {
+        if(Auth::user()){
+            $user = User::find(Auth::user()->id);
+            if($user){
+                return view('admin.profile.update', compact('user'));
+            }
+        }
+    }
+
+    public function UpdateProfile(Request $request)
+    {
+        $user = User::find(Auth::user()->id);
+            if($user){
+                $user->name = $request->name;
+                $user->email = $request->email;
+                $user->save();
+
+                return redirect()->back()->with('success', 'Profile updated successfully');
+        }else{
+            return redirect()->back();
+        }
+    }
+
+
 }

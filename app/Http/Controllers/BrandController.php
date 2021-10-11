@@ -19,7 +19,7 @@ class BrandController extends Controller
     
     public function AllBrand()
     {
-        $brands = Brand::latest()->paginate(3);
+        $brands = Brand::latest()->paginate(5);
 
         return view('admin.brand.index', compact('brands'));
     }
@@ -52,8 +52,12 @@ class BrandController extends Controller
         'brand_image' => $last_img,
         'created_at' => Carbon::now()
         ]);
+        $notification = array(
+            'message' => 'Brand Inserted Successfull',
+            'alert-type' => 'success'
+        );
 
-    return Redirect()->back()->with('succes','Brand Inserted Successfull');
+    return Redirect()->back()->with($notification);
     
 }
 
@@ -96,16 +100,22 @@ class BrandController extends Controller
         'created_at' => Carbon::now()
         ]);
 
-         return Redirect()->back()->with('succes','Brand Update Successfully');
-
+        $notification = array(
+            'message' => 'Brand Update Successfully',
+            'alert-type' => 'warning'
+        );
+         return Redirect()->back()->with($notification);
         }else{
-
         Brand::find($id)->update([
         'brand_name' => $request->brand_name,
         'created_at' => Carbon::now()
         ]);
 
-         return Redirect()->back()->with('succes','Brand Update Successfully');
+         $notification = array(
+            'message' => 'Brand Update Successfully',
+            'alert-type' => 'warning'
+        );
+         return Redirect()->back()->with($notification);
 
         }
     }
@@ -117,7 +127,11 @@ class BrandController extends Controller
         unlink($old_image);
 
         Brand::find($id)->delete();
-        return Redirect()->back()->with('succes','Brand Delete Successfully');
+        $notification = array(
+            'message' => 'Brand Delete Successfully',
+            'alert-type' => 'error'
+        );
+        return Redirect()->back()->with($notification);
     }
 
     public function Multipic()
@@ -141,8 +155,12 @@ class BrandController extends Controller
         'created_at' => Carbon::now()
         ]);
         }
+        $notification = array(
+            'message' => 'Images Inserted Successfull',
+            'alert-type' => 'success'
+        );
 
-    return Redirect()->back()->with('succes','Images Inserted Successfull');
+    return Redirect()->back()->with($notification);
     
 }
 

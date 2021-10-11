@@ -33,7 +33,12 @@ class ServiceController extends Controller
         'created_at' => Carbon::now()
         ]);
 
-    return Redirect()->back()->with('succes','Service Inserted Successfull');
+        $notification = array(
+            'message' => 'Service Inserted Successfull',
+            'alert-type' => 'success'
+        );
+
+    return Redirect()->back()->with($notification);
     
 }
 }

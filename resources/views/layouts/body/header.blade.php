@@ -15,6 +15,7 @@
           <li><a href="{{ route('pages.services') }}">Services</a></li>
           <li><a href="{{ route('pages.portfolio') }}">Portfolio</a></li>
           <li><a href="{{ route('pages.contact') }}">Contact</a></li>
+          <li><a href="{{ route('login') }}">Login</a></li>
 
         </ul>
       </nav><!-- .nav-menu -->

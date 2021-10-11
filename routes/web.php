@@ -104,4 +104,6 @@ Route::post('/pages/send_msg', [ContactController::class, 'SendMessage'])->name(
 //Change Profile
 Route::get('/profile/change_password', [CPassword::class, 'CPassword'])->name('change.password');
 Route::post('/profile/update_password', [CPassword::class, 'UpdatePassword'])->name('update.password');
+Route::get('/profile/update', [CPassword::class, 'PUpdate'])->name('update.profile');
+Route::post('/profile/update', [CPassword::class, 'UpdateProfile'])->name('update.profile');
 
